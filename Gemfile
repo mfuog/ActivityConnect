@@ -10,7 +10,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'simple_form'
-gem 'upmin-admin'
 gem 'figaro'
 
 group :development do
