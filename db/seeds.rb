@@ -13,13 +13,14 @@ puts 'CREATED ADMIN USER: ' << user.email
 #
 
 Activity.create(
-	title: "Walking around the lake",
-	description: "Who would like to join me for a walk around Trummen lake next Sunday?",
-	when: Time.now + 3.weeks
+  title: "Walking around the lake",
+  description: "Who would like to join me for a walk around Trummen lake next Sunday?",
+  when: Time.now + 3.weeks,
+  author: user
 )
 
 Activity.create(
-	title: "Looking for chess partner",
-	description: "I'd be interested in playing a game of chess every week. We could meet at my place.",
-	when: Time.now + 2.weeks
+  title: "Looking for chess partner",
+  description: "I'd be interested in playing a game of chess every week. We could meet at my place.",
+  when: Time.now + 2.weeks
 )
