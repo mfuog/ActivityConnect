@@ -17,30 +17,31 @@ puts 'CREATED ADMIN USER: ' << admin.username
 # Other users
 #
 
-alice = User.create(
+alice = User.create!(
   username: 'alice',
   first_name: 'Alice',
   last_name: 'Example',
   email: 'alice.example@example.com',
-  password: 'alice',
-  password_confirmation: 'alice'
+  password: 'alicealice',
+  password_confirmation: 'alicealice'
 )
-bob = User.create(
+bob = User.create!(
   username: 'bob',
   first_name: 'Bob',
   last_name: 'Example',
   email: 'bob.example@example.com',
-  password: 'bob',
-  password_confirmation: 'bob'
+  password: 'bobbob',
+  password_confirmation: 'bobbob'
 )
-chuck = User.create(
+chuck = User.create!(
   username: 'chuck',
   first_name: 'Chuck',
   last_name: 'Chuckles',
   email: 'chuck.chuckles@example.com',
-  password: 'chuck',
-  password_confirmation: 'chuck'
+  password: 'chuckchuck',
+  password_confirmation: 'chuckchuck'
 )
+
 #
 # Activity
 #
