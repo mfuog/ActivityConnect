@@ -5,11 +5,10 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
-    respond_with(@activities)
   end
 
   def show
-    respond_with(@activity)
+    @activity = Activity.find(params[:id])
   end
 
   def new
