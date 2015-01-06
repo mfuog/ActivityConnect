@@ -19,6 +19,7 @@ puts 'CREATED ADMIN USER: ' << admin.username
 
 alice = User.create!(
   username: 'alice',
+  role: 'caretaker',
   first_name: 'Alice',
   last_name: 'Example',
   email: 'alice.example@example.com',
@@ -27,6 +28,7 @@ alice = User.create!(
 )
 bob = User.create!(
   username: 'bob',
+  role: 'user',
   first_name: 'Bob',
   last_name: 'Example',
   email: 'bob.example@example.com',
@@ -35,6 +37,7 @@ bob = User.create!(
 )
 chuck = User.create!(
   username: 'chuck',
+  role: 'caretaker',
   first_name: 'Chuck',
   last_name: 'Chuckles',
   email: 'chuck.chuckles@example.com',
