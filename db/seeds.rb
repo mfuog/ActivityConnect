@@ -11,14 +11,13 @@
 #
 
 admin = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << admin.username
+puts 'CREATED ADMIN USER: ' << admin.email
 
 #
 # Other users
 #
 
 alice = User.create!(
-  username: 'alice',
   role: 'caretaker',
   first_name: 'Alice',
   last_name: 'Example',
@@ -27,7 +26,6 @@ alice = User.create!(
   password_confirmation: 'alicealice'
 )
 bob = User.create!(
-  username: 'bob',
   role: 'user',
   first_name: 'Bob',
   last_name: 'Example',
@@ -36,7 +34,6 @@ bob = User.create!(
   password_confirmation: 'bobbob'
 )
 chuck = User.create!(
-  username: 'chuck',
   role: 'caretaker',
   first_name: 'Chuck',
   last_name: 'Chuckles',
