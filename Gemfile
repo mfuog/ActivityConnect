@@ -16,6 +16,7 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'disqus_rails'
 end
 
 group :development, :test do
