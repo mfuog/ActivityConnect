@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -9,6 +10,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    @comments = @activity.comments.all
+    @comment = @activity.comments.build
   end
 
   def new
