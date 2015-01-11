@@ -20,16 +20,18 @@
   <%= @activity.author.first_name %>
 </p>
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Edit', edit_activity_path(@activity) if @isAuthor %>
 <%= link_to 'Back', activities_path %>
 
 <h3>Comments</h3>
 <% @comments.each do |comment| %>
   <div>
-    <strong><%= comment.commenter.first_name %></strong>
-    <br />
-    <p><%= comment.body %></p>
-    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p>
+    <strong><%= comment.commenter.first_name %>:</strong>
+    <%= comment.created_at.to_formatted_s(:long_ordinal) %>
+    <br>
+    <%= comment.body %>
+    </p>
   </div>
 <% end %>
 <%= render 'comments/form' %>
