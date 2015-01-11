@@ -21,7 +21,7 @@ alice = User.create!(
   role: 'caretaker',
   first_name: 'Alice',
   last_name: 'Example',
-  email: 'alice.example@example.com',
+  email: 'alice@example.com',
   password: 'alicealice',
   password_confirmation: 'alicealice'
 )
@@ -29,7 +29,7 @@ bob = User.create!(
   role: 'user',
   first_name: 'Bob',
   last_name: 'Example',
-  email: 'bob.example@example.com',
+  email: 'bob@example.com',
   password: 'bobbob',
   password_confirmation: 'bobbob'
 )
