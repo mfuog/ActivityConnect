@@ -100,15 +100,15 @@ Comment.create(
 
 Signup.create(
   activity: lake_walk,
-  participant: bob
+  user: bob
 )
 
 Signup.create(
   activity: lake_walk,
-  participant: chuck
+  user: chuck
 )
 
 Signup.create(
   activity: chess,
-  participant: alice
+  user: alice
 )

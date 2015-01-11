@@ -1,2 +1,3 @@
 json.(@activity, :id, :title, :description, :when)
-json.author @activity.author, :id, :email, :first_name, :last_name, :role
+json.(@activity.author, :id, :first_name)
+json.participants @activity.participants, :id, :first_name, :last_name, :email

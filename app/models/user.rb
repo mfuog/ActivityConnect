@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :authored_activities, class_name: "Activity"
+  has_many :authored_activities, class_name: "Activity", foreign_key: "author_id"
   has_many :signups, dependent: :destroy
   has_many :joint_activities, through: :signups, source: :activity
   has_many :comments
