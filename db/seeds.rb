@@ -79,7 +79,7 @@ Comment.create(
 Comment.create(
   commenter: alice,
   activity: lake_walk,
-  body: "I thought myabe at 14:00. Let's meet in front of the Netto. Looking forward to it!"
+  body: "I thought maybe at 14:00. Let's meet in front of the Netto. Looking forward to it!"
 )
 
 Comment.create(
