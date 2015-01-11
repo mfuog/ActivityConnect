@@ -98,17 +98,17 @@ Comment.create(
 # Activity participants
 #
 
-Signup.create(
+Participation.create(
   activity: lake_walk,
   user: bob
 )
 
-Signup.create(
+Participation.create(
   activity: lake_walk,
   user: chuck
 )
 
-Signup.create(
+Participation.create(
   activity: chess,
   user: alice
 )
