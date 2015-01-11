@@ -43,19 +43,53 @@ chuck = User.create!(
 )
 
 #
-# Activity
+# Activities
 #
 
-Activity.create(
+lake_walk = Activity.create(
   title: "Walking around the lake",
   description: "Who would like to join me for a walk around Trummen lake next Sunday?",
   when: Time.now + 3.weeks,
   author: alice
 )
 
-Activity.create(
+chess = Activity.create(
   title: "Looking for chess partner",
   description: "I'd be interested in playing a game of chess every week. We could meet at my place.",
   when: Time.now + 2.weeks,
   author: bob
+)
+
+#
+# Comments
+#
+
+Comment.create(
+  commenter: alice,
+  activity: chess,
+  body: "I would love to play chess with you, but I'm no pro so you'd have to be patient with me. :)"
+)
+
+Comment.create(
+  commenter: bob,
+  activity: lake_walk,
+  body: "I'm in! What time should we go and where to meet?"
+)
+
+Comment.create(
+  commenter: alice,
+  activity: lake_walk,
+  body: "I thought myabe at 14:00. Let's meet in front of the Netto. Looking forward to it!"
+)
+
+Comment.create(
+  commenter: chuck,
+  activity: lake_walk,
+  body: "Can I also join you guys?"
+)
+
+Comment.create(
+  commenter: alice,
+  activity: lake_walk,
+  body: "Sure!"
 )
