@@ -93,3 +93,22 @@ Comment.create(
   activity: lake_walk,
   body: "Sure!"
 )
+
+#
+# Activity participants
+#
+
+Signup.create(
+  activity: lake_walk,
+  participant: bob
+)
+
+Signup.create(
+  activity: lake_walk,
+  participant: chuck
+)
+
+Signup.create(
+  activity: chess,
+  participant: alice
+)

@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :authored_activities, class_name: "Activity"
+  has_many :signups, dependent: :destroy
+  has_many :joint_activities, through: :signups, source: :activity
+  has_many :comments
+
   enum role: [:user, :caretaker, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
