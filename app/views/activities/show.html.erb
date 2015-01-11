@@ -20,8 +20,18 @@
   <%= @activity.author.first_name %>
 </p>
 
+<p>
+  <strong>Participants:</strong>
+  <ul>
+    <% @activity.participants.each do |participant| %>
+      <li><%= participant.first_name %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_activity_path(@activity) if @isAuthor %>
 <%= link_to 'Back', activities_path %>
+<%= button_to "Join activity!", controller: :participations, action: :create, activity_id: @activity.id %>
 
 <h3>Comments</h3>
 <% @comments.each do |comment| %>
