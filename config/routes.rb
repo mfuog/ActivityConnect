@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :activities
-  resources :comments, except: [:show, :create]
+  resources :comments, only: [:create]
   resources :participations, only: [:create, :destroy]
 end
