@@ -3,9 +3,12 @@ class User < ActiveRecord::Base
   has_many :participations, dependent: :destroy
   has_many :joint_activities, through: :participations, source: :activity
   has_many :comments
-
-  enum role: [:user, :caretaker, :admin]
+  enum role: [:admin, :caretaker, :user]
   after_initialize :set_default_role, :if => :new_record?
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :role, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

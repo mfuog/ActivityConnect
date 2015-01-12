@@ -27,6 +27,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'shoulda'
+  gem 'shoulda-matchers', require: false
 end
 
 group :production do
