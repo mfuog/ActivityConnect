@@ -16,7 +16,9 @@ class ParticipationsController < ApplicationController
     flash[:notice] = success_message('deleted') if @participation.destroy
     redirect_to activity_path(params[:activity_id])
   end
+  
   private
+
     def set_participation
       @participation = Participation.find_by_user_id_and_activity_id(current_user.id, params[:activity_id])
     end
