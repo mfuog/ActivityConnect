@@ -10,7 +10,7 @@ describe User do
   it { should validate_presence_of :role }
   it { should validate_presence_of :email }
   it { should validate_uniqueness_of :email }
-  it { should define_enum_for(:role).with([:admin, :caretaker, :user]) }
+  it { should define_enum_for(:role).with([:admin, :caregiver, :user]) }
 
   describe "role" do
     it "is 'user' by default" do

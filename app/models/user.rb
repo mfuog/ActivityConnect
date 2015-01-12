@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :participations, dependent: :destroy
   has_many :joint_activities, through: :participations, source: :activity
   has_many :comments
-  enum role: [:admin, :caretaker, :user]
+  enum role: [:admin, :caregiver, :user]
   after_initialize :set_default_role, :if => :new_record?
 
   validates :first_name, presence: true
