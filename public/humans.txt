@@ -6,6 +6,9 @@
   Developer: Myrtha Fuog
   Twitter: @notyanka
   Location: Växjö, Sweden
+  System Analysis & Documentation: Corinna Breitinger
+  Twitter: @BreitingerC
+  LoLocation: Växjö, Sweden
 
 /* THANKS */
   Daniel Kehoe (@rails_apps) for the RailsApps project
