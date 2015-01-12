@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :caregiver, class_name: "User"
+  has_many :care_recipients, class_name: "User", foreign_key: "caregiver_id"
   has_many :authored_activities, class_name: "Activity", foreign_key: "author_id"
   has_many :participations, dependent: :destroy
   has_many :joint_activities, through: :participations, source: :activity

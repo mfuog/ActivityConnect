@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe User do
+  it { should belong_to(:caregiver) }
+  it { should have_many(:care_recipients) }
   it { should have_many(:authored_activities) }
   it { should have_many(:joint_activities) }
   #FIXME
