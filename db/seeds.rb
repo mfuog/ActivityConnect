@@ -11,35 +11,35 @@
 #
 
 admin = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << admin.email
+puts "CREATED ADMIN USER: " << admin.email
 
 #
 # Other users
 #
 
 alice = User.create!(
-  role: 'caretaker',
-  first_name: 'Alice',
-  last_name: 'Example',
-  email: 'alice@example.com',
-  password: 'alicealice',
-  password_confirmation: 'alicealice'
+  role: "caretaker",
+  first_name: "Alice",
+  last_name: "Example",
+  email: "alice@example.com",
+  password: "alicealice",
+  password_confirmation: "alicealice"
 )
 bob = User.create!(
-  role: 'user',
-  first_name: 'Bob',
-  last_name: 'Example',
-  email: 'bob@example.com',
-  password: 'bobbob',
-  password_confirmation: 'bobbob'
+  role: "user",
+  first_name: "Bob",
+  last_name: "Example",
+  email: "bob@example.com",
+  password: "bobbob",
+  password_confirmation: "bobbob"
 )
 chuck = User.create!(
-  role: 'caretaker',
-  first_name: 'Chuck',
-  last_name: 'Chuckles',
-  email: 'chuck.chuckles@example.com',
-  password: 'chuckchuck',
-  password_confirmation: 'chuckchuck'
+  role: "caretaker",
+  first_name: "Chuck",
+  last_name: "Chuckles",
+  email: "chuck.chuckles@example.com",
+  password: "chuckchuck",
+  password_confirmation: "chuckchuck"
 )
 
 #

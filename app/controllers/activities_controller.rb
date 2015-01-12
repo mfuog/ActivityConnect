@@ -41,14 +41,14 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
-    flash[:notice] = 'Activity was successfully created.' if @activity.save
+    flash[:notice] = "Activity was successfully created." if @activity.save
     respond_with(@activity)
   end
 
   # PATCH/PUT /activities/:id
   # PATCH/PUT /activities/:id.json
   def update
-    flash[:notice] = 'Activity was successfully updated.' if @activity.update(activity_params)
+    flash[:notice] = "Activity was successfully updated." if @activity.update(activity_params)
     respond_with(@activity)
   end
 

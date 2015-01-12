@@ -15,7 +15,7 @@ describe User do
   describe "role" do
     it "is 'user' by default" do
       user = FactoryGirl.create(:user)
-      expect(user.role).to eq('user')
+      expect(user.role).to eq("user")
     end
   end
 end

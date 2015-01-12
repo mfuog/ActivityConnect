@@ -29,8 +29,8 @@
   </ul>
 </p>
 
-<%= link_to 'Edit', edit_activity_path(@activity) if @isAuthor %>
-<%= link_to 'Back', activities_path %>
+<%= link_to "Edit", edit_activity_path(@activity) if @isAuthor %>
+<%= link_to "Back", activities_path %>
 <% if @isParticipant %>
   <%= button_to "Cancel participation",
                   { controller: :participations,
@@ -55,6 +55,6 @@
     </p>
   </div>
 <% end %>
-<%= render 'comments/form' %>
+<%= render "comments/form" %>
 
 <%- disqus_thread %>
