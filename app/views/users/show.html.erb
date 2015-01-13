@@ -1,4 +1,12 @@
-<h3>User</h3>
-<p>First name: <%= @user.first_name if @user.first_name %></p>
-<p>Last name: <%= @user.last_name if @user.last_name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<% if @user == current_user %>
+  <h3>My profile</h3>
+<% else %>
+  <h3>User <%= @user.first_name %></h3>
+<% end %>
+
+<% unless @user.user? %>
+  <p><i><%= @user.role %></i></p>
+<% end %>
+<p><strong>First name:</strong> <%= @user.first_name %></p>
+<p><strong>Last name:</strong> <%= @user.last_name %></p>
+<p><strong>E-mail:</strong> <%= mail_to @user.email %></p>
