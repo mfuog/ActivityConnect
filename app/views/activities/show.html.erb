@@ -15,17 +15,19 @@
   <%= @activity.description %>
 </p>
 
+<% unless @activity.address.blank? %>
 <p>
   <strong>Proposed location:</strong>
   <%= @activity.address %>
 </p>
 
-<iframe width="300"
-        height="250"
-        frameborder="0"
-        style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?q=<%=@activity.address%>&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
-</iframe>
+  <iframe width="300"
+          height="250"
+          frameborder="0"
+          style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?q=<%=@activity.address%>&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
+  </iframe>
+<% end %>
 
 <%= link_to "Edit", edit_activity_path(@activity) if @isAuthor %>
 <%= link_to "Back", activities_path %>
