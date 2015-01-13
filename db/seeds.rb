@@ -54,7 +54,7 @@ linnea = User.create!(
 #
 
 alice = User.create!(
-  role: "user",
+  role: "care_recipient",
   caregiver: karl,
   first_name: "Alice",
   last_name: "Example",
@@ -63,7 +63,7 @@ alice = User.create!(
   password_confirmation: "alicealice"
 )
 bob = User.create!(
-  role: "user",
+  role: "care_recipient",
   caregiver: linnea,
   first_name: "Bob",
   last_name: "Example",
@@ -72,7 +72,7 @@ bob = User.create!(
   password_confirmation: "bobbob"
 )
 chuck = User.create!(
-  role: "user",
+  role: "care_recipient",
   first_name: "Chuck",
   last_name: "Chuckles",
   email: "chuck.chuckles@example.com",
