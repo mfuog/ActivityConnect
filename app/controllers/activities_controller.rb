@@ -41,6 +41,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
+    @activity.author = current_user
     flash[:notice] = "Activity was successfully created." if @activity.save
     respond_with(@activity)
   end
@@ -66,6 +67,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:title, :description, :proposed_time, :author_id)
+      params.require(:activity).permit(:author_id, :title, :description, :proposed_time, :address)
     end
 end

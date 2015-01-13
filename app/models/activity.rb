@@ -5,6 +5,7 @@ class Activity < ActiveRecord::Base
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user
 
+  before_validation :fill_in_defaults
   validates :author, presence: true
   validates :title, presence: true
   validates :description, presence: true
@@ -18,5 +19,11 @@ class Activity < ActiveRecord::Base
   # Returns true if the user is a participant, or false otherwise.
   def has_participant?(user)
     participants.any? { |p| p.id == user.id }
+  end
+
+  private
+
+  def fill_in_defaults
+    self.address ||= author.address
   end
 end

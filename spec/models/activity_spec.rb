@@ -7,6 +7,14 @@ describe Activity do
   it { should validate_presence_of :author }
   it { should validate_presence_of :title }
   it { should validate_presence_of :description }
+  it { should validate_presence_of :address }
+
+  describe "activity address" do
+    it "is the author's address by default" do
+      activity = FactoryGirl.create(:activity, address: nil)
+      expect(activity.address).to eq(activity.author.address)
+    end
+  end
 
   describe "#has_participants?" do
     before(:each) do
