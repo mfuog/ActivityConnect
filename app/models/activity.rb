@@ -1,4 +1,5 @@
 class Activity < ActiveRecord::Base
+  default_scope { order('proposed_time ASC') }
   belongs_to :author, class_name: "User"
   has_many :comments 
   has_many :participations, dependent: :destroy
