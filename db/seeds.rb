@@ -7,14 +7,29 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #
-# Admin user
+# Admin users
 #
 
-admin = CreateAdminService.new.call
-puts "CREATED ADMIN USER: " << admin.email
+admin1 = User.create!(
+  role: "admin",
+  first_name: ENV['ADMIN_FIRSTNAME'],
+  last_name: ENV['ADMIN_LASTNAME'],
+  email: ENV['ADMIN_EMAIL'],
+  password: ENV['ADMIN_PASSWORD'],
+  password_confirmation: ENV['ADMIN_PASSWORD']
+)
+admin2 = User.create!(
+  role: "admin",
+  first_name: ENV['ADMIN2_FIRSTNAME'],
+  last_name: ENV['ADMIN2_LASTNAME'],
+  email: ENV['ADMIN2_EMAIL'],
+  password: ENV['ADMIN2_PASSWORD'],
+  password_confirmation: ENV['ADMIN2_PASSWORD']
+)
+puts "CREATED ADMIN USERS: #{admin1.email}, #{admin2.email}"
 
 #
-# Other users
+# Caregivers
 #
 
 karl = User.create!(
@@ -33,6 +48,11 @@ linnea = User.create!(
   password: "linnealinnea",
   password_confirmation: "linnealinnea"
 )
+
+#
+# Regular users
+#
+
 alice = User.create!(
   role: "user",
   caregiver: karl,
