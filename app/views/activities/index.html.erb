@@ -6,7 +6,7 @@
       <th>Title</th>
       <th>Description</th>
       <th>Author</th>
-      <th>When</th>
+      <th>Proposed time</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
         <td><%= link_to activity.title, activity %></td>
         <td><%= activity.description %></td>
         <td><%= link_to activity.author.first_name, activity.author %></td>
-        <td><%= activity.when %></td>
+        <td><%= activity.proposed_time %></td>
         <td>
           <% if current_user == activity.author %>
             <%= link_to "Destroy", activity, method: :delete, data: { confirm: "Are you sure?" } %>
