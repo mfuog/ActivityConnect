@@ -87,14 +87,14 @@ chuck = User.create!(
 lake_walk = Activity.create(
   title: "Walking around the lake",
   description: "Who would like to join me for a walk around Trummen lake next Sunday?",
-  when: Time.now + 3.weeks,
+  proposed_time: Time.now + 3.weeks,
   author: alice
 )
 
 chess = Activity.create(
   title: "Looking for chess partner",
   description: "I'd be interested in playing a game of chess every week. We could meet at my place.",
-  when: Time.now + 2.weeks,
+  proposed_time: Time.now + 2.weeks,
   author: bob
 )
 
