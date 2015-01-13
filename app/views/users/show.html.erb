@@ -30,3 +30,27 @@
   <%= link_to "Add more", users_path %>
 <% end %>
 
+<% if @user.user? %>
+  <h4>My activities</h4>
+  <ul>
+    <% @user.authored_activities.each do |activity| %>
+      <li><%= link_to activity.title, activity %></li>
+    <% end %>
+    <% if @user.authored_activities.blank? %>
+      <li><i>none</i></li>
+    <% end %>
+  </ul>
+  <%= link_to "Propose Activity", new_activity_path %>
+
+  <h4>Joint activities</h4>
+  <ul>
+    <% @user.joint_activities.each do |activity| %>
+      <li><%= link_to activity.title, activity %></li>
+    <% end %>
+    <% if @user.joint_activities.blank? %>
+      <li><i>none</i></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= link_to "Find Activity", activities_path %>
+
