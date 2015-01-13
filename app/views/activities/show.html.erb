@@ -9,7 +9,7 @@
 
 <p>
   <strong>Proposed time:</strong>
-  <%= @activity.proposed_time %>
+  <%= @activity.proposed_time.to_formatted_s(:long_ordinal) %>
 </p>
 
 <p>

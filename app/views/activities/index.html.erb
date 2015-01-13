@@ -17,7 +17,7 @@
         <td><%= link_to activity.title, activity %></td>
         <td><%= activity.description %></td>
         <td><%= link_to activity.author.first_name, activity.author %></td>
-        <td><%= activity.proposed_time %></td>
+        <td><%= activity.proposed_time.to_formatted_s(:long_ordinal) %></td>
         <td>
           <% if current_user == activity.author %>
             <%= link_to "Destroy", activity, method: :delete, data: { confirm: "Are you sure?" } %>
