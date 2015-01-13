@@ -10,3 +10,23 @@
 <p><strong>First name:</strong> <%= @user.first_name %></p>
 <p><strong>Last name:</strong> <%= @user.last_name %></p>
 <p><strong>E-mail:</strong> <%= mail_to @user.email %></p>
+<%= link_to "Edit profile", edit_user_registration_path if @user == current_user %>
+
+<% if @user.caregiver? %>
+  <h4>My care-recipients</h4>
+  <ul>
+    <% @user.care_recipients.each do |person| %>
+    <li>
+      <%= link_to person.first_name, person %>
+      <% unless person.caregiver.nil? %>
+        <%= form_for person do |t| %>
+          <%= t.hidden_field :caregiver_id, value: nil %>
+          <%= t.submit "Uncare </3" %>
+        <% end %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <%= link_to "Add more", users_path %>
+<% end %>
+
