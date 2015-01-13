@@ -6,7 +6,7 @@ RSpec.describe UsersController, :type => :controller do
     before(:each) do
       @current_user = FactoryGirl.create(:user)
       sign_in @current_user
-      @other_user = FactoryGirl.create(:user, role: "user")
+      @other_user = FactoryGirl.create(:user)
       #FIXME: why do tests fail without this line?
       @current_user.update!(role: "admin")
       put :update,

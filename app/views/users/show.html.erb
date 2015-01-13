@@ -4,9 +4,21 @@
   <h3>User <%= @user.first_name %></h3>
 <% end %>
 
-<% unless @user.user? %>
+<% unless @user.care_recipient? %>
   <p><i><%= @user.role %></i></p>
 <% end %>
+
+<% if @user.care_recipient? && !current_user.care_recipient? %>
+  <p>
+    <strong>Caregiver:</strong>
+    <% if @user.caregiver_id.blank? %>
+      <i>none</i>
+    <% else %>
+      <%= link_to @user.caregiver.first_name, @user.caregiver %>
+    <% end %>
+  </p>
+<% end %>
+
 <p><strong>First name:</strong> <%= @user.first_name %></p>
 <p><strong>Last name:</strong> <%= @user.last_name %></p>
 <p><strong>E-mail:</strong> <%= mail_to @user.email %></p>
@@ -30,8 +42,9 @@
   <%= link_to "Add more", users_path %>
 <% end %>
 
-<% if @user.user? %>
-  <h4>My activities</h4>
+<% if @user.care_recipient? && current_user == @user %>
+  
+  <h4>Porposed activities</h4>
   <ul>
     <% @user.authored_activities.each do |activity| %>
       <li><%= link_to activity.title, activity %></li>
@@ -52,4 +65,30 @@
     <% end %>
   </ul>
   <%= link_to "Find Activity", activities_path %>
+<% end %>
+
+<% if current_user == @user.caregiver %>
+  <h3>User statistics</h3>
+
+  <h4>Activities proposed by <%= @user.first_name %></h4>
+  <ul>
+    <% @user.authored_activities.each do |activity| %>
+      <li><%= link_to activity.title, activity %></li>
+    <% end %>
+    <% if @user.authored_activities.blank? %>
+      <li><i>none</i></li>
+    <% end %>
+  </ul>
+
+    <h4>Activities <%= @user.first_name %> joined</h4>
+  <ul>
+    <% @user.joint_activities.each do |activity| %>
+      <li><%= link_to activity.title, activity %></li>
+    <% end %>
+    <% if @user.joint_activities.blank? %>
+      <li><i>none</i></li>
+    <% end %>
+  </ul>
+
+  <pre><strong>Future work:</strong> More sophisticated statistics on the user's activity will go here.</pre>
 <% end %>

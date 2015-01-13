@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :participations, dependent: :destroy
   has_many :joint_activities, through: :participations, source: :activity
   has_many :comments
-  enum role: [:admin, :caregiver, :user]
+  enum role: [:admin, :caregiver, :care_recipient]
   after_initialize :set_default_role, :if => :new_record?
 
   validates :first_name, presence: true
@@ -21,6 +21,6 @@ class User < ActiveRecord::Base
   private
   
   def set_default_role
-    self.role ||= :user
+    self.role ||= :care_recipient
   end
 end

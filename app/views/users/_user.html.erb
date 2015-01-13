@@ -13,7 +13,7 @@
 </td>
 
 <td>
-  <% if current_user.caregiver? && user.user? %>
+  <% if current_user.caregiver? && user.care_recipient? %>
     <% if user.caregiver.nil? %>
       <%= form_for user do |t| %>
         <%= t.hidden_field :caregiver_id, value: current_user.id %>
