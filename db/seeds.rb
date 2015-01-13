@@ -95,7 +95,7 @@ lake_walk = Activity.create(
   title: "Walking around the lake",
   description: "Who would like to join me for a walk around Trummen lake next Sunday?",
   proposed_time: Time.now + 3.weeks,
-  address: "J F Liedholms väg 14, Växjö"
+  address: "J F Liedholms väg 14, Växjö",
   author: alice
 )
 
