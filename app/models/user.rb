@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  default_scope { order('role ASC, first_name') }
   belongs_to :caregiver, class_name: "User"
   has_many :care_recipients, class_name: "User", foreign_key: "caregiver_id"
   has_many :authored_activities, class_name: "Activity", foreign_key: "author_id"
