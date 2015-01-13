@@ -103,7 +103,7 @@ chess = Activity.create(
   title: "Looking for chess partner",
   description: "I'd be interested in playing a game of chess every week. We could meet at my place.",
   proposed_time: Time.now + 2.weeks,
-  address: bob.address
+  address: bob.address,
   author: bob
 )
 
