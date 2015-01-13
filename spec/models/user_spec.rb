@@ -5,8 +5,6 @@ describe User do
   it { should have_many(:care_recipients) }
   it { should have_many(:authored_activities) }
   it { should have_many(:joint_activities) }
-  #FIXME
-  #it { should have_many(:comments)}#.with_foreign_key('commenter_id') }
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :role }
