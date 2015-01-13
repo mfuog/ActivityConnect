@@ -74,12 +74,12 @@
   </ul>
   <%= link_to "Propose Activity", new_activity_path %>
 
-  <h4>Joint activities</h4>
+  <h4>joined activities</h4>
   <ul>
-    <% @user.joint_activities.each do |activity| %>
+    <% @user.joined_activities.each do |activity| %>
       <li><%= link_to activity.title, activity %></li>
     <% end %>
-    <% if @user.joint_activities.blank? %>
+    <% if @user.joined_activities.blank? %>
       <li><i>none</i></li>
     <% end %>
   </ul>
@@ -102,10 +102,10 @@
 
     <h4>Activities <%= @user.first_name %> joined</h4>
   <ul>
-    <% @user.joint_activities.each do |activity| %>
+    <% @user.joined_activities.each do |activity| %>
       <li><%= link_to activity.title, activity %></li>
     <% end %>
-    <% if @user.joint_activities.blank? %>
+    <% if @user.joined_activities.blank? %>
       <li><i>none</i></li>
     <% end %>
   </ul>

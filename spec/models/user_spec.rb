@@ -4,7 +4,7 @@ describe User do
   it { should belong_to(:caregiver) }
   it { should have_many(:care_recipients) }
   it { should have_many(:authored_activities) }
-  it { should have_many(:joint_activities) }
+  it { should have_many(:joined_activities) }
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :role }
