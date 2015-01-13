@@ -1,5 +1,5 @@
 <td>
-  <%= link_to user.email, user %>
+  <%= link_to user.first_name, user %>
 </td>
 <td>
   <% if current_user.admin? && current_user != user %>
@@ -25,7 +25,7 @@
         <%= t.submit "Uncare </3" %>
       <% end %>
     <% else %>
-      caregiver: <%= user.caregiver.first_name %>
+      caregiver: <%= link_to user.caregiver.first_name, user.caregiver %>
     <% end %>
   <% end %>
 </td>

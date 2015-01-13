@@ -24,7 +24,7 @@
   <strong>Participants:</strong>
   <ul>
     <% @activity.participants.each do |participant| %>
-      <li><%= participant.first_name %></li>
+      <li><%= link_to participant.first_name, participant %></li>
     <% end %>
   </ul>
 </p>
@@ -48,10 +48,10 @@
 <% @comments.each do |comment| %>
   <div>
     <p>
-    <strong><%= comment.commenter.first_name %>:</strong>
     <%= comment.created_at.to_formatted_s(:long_ordinal) %>
     <br>
     <%= comment.body %>
+      <strong><%= link_to comment.commenter.first_name, comment.commenter %>:</strong>
     </p>
   </div>
 <% end %>
