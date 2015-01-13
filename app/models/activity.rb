@@ -9,6 +9,9 @@ class Activity < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
 
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed? # auto-fetch coordinates
+
   # Determine wether a user is a participant of the activity.
   #
   # user - The user to check for.
