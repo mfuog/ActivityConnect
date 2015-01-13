@@ -23,7 +23,22 @@
 
 <p><strong>First name:</strong> <%= @user.first_name %></p>
 <p><strong>Last name:</strong> <%= @user.last_name %></p>
-<p><strong>Address:</strong> <%= @user.address %></p>
+<p><strong>Gender:</strong> <%= @user.gender %></p>
+<p><strong>Age:</strong> <%= @user.age %></p>
+<p><strong>Interests:</strong> <%= @user.interests %></p>
+<% unless @user.address.blank? %>
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+  <iframe width="300"
+          height="250"
+          frameborder="0"
+          style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?q=<%=@user.address%>&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
+  </iframe>
+<% end %>
 <p><strong>E-mail:</strong> <%= mail_to @user.email %></p>
 <%= link_to "Edit profile", edit_user_registration_path if @user == current_user %>
 
