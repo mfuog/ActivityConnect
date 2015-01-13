@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
     @comments = @activity.comments.all
     @comment = @activity.comments.build
     @isAuthor = current_user == @activity.author
-    @isParticipant = @activity.participant?(current_user)
+    @isParticipant = @activity.has_participant?(current_user)
 
     respond_with(@activity)
   end
