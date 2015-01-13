@@ -15,6 +15,7 @@ admin1 = User.create!(
   first_name: ENV['ADMIN_FIRSTNAME'],
   last_name: ENV['ADMIN_LASTNAME'],
   email: ENV['ADMIN_EMAIL'],
+  address: "Georg Lückligs väg 16, Växjö",
   password: ENV['ADMIN_PASSWORD'],
   password_confirmation: ENV['ADMIN_PASSWORD']
 )
@@ -23,6 +24,7 @@ admin2 = User.create!(
   first_name: ENV['ADMIN2_FIRSTNAME'],
   last_name: ENV['ADMIN2_LASTNAME'],
   email: ENV['ADMIN2_EMAIL'],
+  address: "Gamla vägen 7, Växjö",
   password: ENV['ADMIN2_PASSWORD'],
   password_confirmation: ENV['ADMIN2_PASSWORD']
 )
@@ -37,6 +39,7 @@ karl = User.create!(
   first_name: "Karl",
   last_name: "Karlsson",
   email: "karl.karlsson@example.com",
+  address: "Stallvägen 25, Växjö",
   password: "karlkarl",
   password_confirmation: "karlkarl"
 )
@@ -45,6 +48,7 @@ linnea = User.create!(
   first_name: "Linnea",
   last_name: "Lin",
   email: "linnea.lin@example.com",
+  address: "Arabygatan 31, Växjö",
   password: "linnealinnea",
   password_confirmation: "linnealinnea"
 )
@@ -59,6 +63,7 @@ alice = User.create!(
   first_name: "Alice",
   last_name: "Example",
   email: "alice@example.com",
+  address: "Ramsövägen 26, Växjö",
   password: "alicealice",
   password_confirmation: "alicealice"
 )
@@ -68,6 +73,7 @@ bob = User.create!(
   first_name: "Bob",
   last_name: "Example",
   email: "bob@example.com",
+  address: "Lindögatan 4, Växjö",
   password: "bobbob",
   password_confirmation: "bobbob"
 )
@@ -76,6 +82,7 @@ chuck = User.create!(
   first_name: "Chuck",
   last_name: "Chuckles",
   email: "chuck.chuckles@example.com",
+  address: "Hästskovägen 9, Växjö",
   password: "chuckchuck",
   password_confirmation: "chuckchuck"
 )

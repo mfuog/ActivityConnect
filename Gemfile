@@ -12,6 +12,7 @@ gem "devise"
 gem "simple_form"
 gem "figaro"
 gem "disqus_rails"
+gem "geocoder"
 
 group :development do
   gem "better_errors"

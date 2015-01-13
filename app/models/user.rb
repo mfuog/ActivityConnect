@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: true
+  validates :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed? # auto-fetch coordinates
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
