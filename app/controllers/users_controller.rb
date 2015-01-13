@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :admin_only, :except => :show
+  before_action :authenticate_user!
+  before_action :restrict_caretaker_access, only: :destroy
+  before_action :restrict_user_access, except: :show
 
   def index
     @users = User.all
@@ -32,14 +33,20 @@ class UsersController < ApplicationController
 
   private
 
-  def admin_only
-    unless current_user.admin?
+  def restrict_user_access
+    if current_user.user?
       redirect_to :back, :alert => "Access denied."
     end
   end
 
+  def restrict_caretaker_access
+    if current_user.caregiver?
+      redirect_to :back, alert: "Access denied"
+    end
+  end
+
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role, :caregiver_id)
   end
 
 end

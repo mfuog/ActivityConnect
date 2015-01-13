@@ -17,8 +17,25 @@ puts "CREATED ADMIN USER: " << admin.email
 # Other users
 #
 
-alice = User.create!(
+karl = User.create!(
   role: "caregiver",
+  first_name: "Karl",
+  last_name: "Karlsson",
+  email: "karl.karlsson@example.com",
+  password: "karlkarl",
+  password_confirmation: "karlkarl"
+)
+linnea = User.create!(
+  role: "caregiver",
+  first_name: "Linnea",
+  last_name: "Lin",
+  email: "linnea.lin@example.com",
+  password: "linnealinnea",
+  password_confirmation: "linnealinnea"
+)
+alice = User.create!(
+  role: "user",
+  caregiver: karl,
   first_name: "Alice",
   last_name: "Example",
   email: "alice@example.com",
@@ -27,6 +44,7 @@ alice = User.create!(
 )
 bob = User.create!(
   role: "user",
+  caregiver: linnea,
   first_name: "Bob",
   last_name: "Example",
   email: "bob@example.com",
@@ -34,7 +52,7 @@ bob = User.create!(
   password_confirmation: "bobbob"
 )
 chuck = User.create!(
-  role: "caregiver",
+  role: "user",
   first_name: "Chuck",
   last_name: "Chuckles",
   email: "chuck.chuckles@example.com",
