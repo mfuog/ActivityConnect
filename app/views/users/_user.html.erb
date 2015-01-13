@@ -17,12 +17,12 @@
     <% if user.caregiver.nil? %>
       <%= form_for user do |t| %>
         <%= t.hidden_field :caregiver_id, value: current_user.id %>
-        <%= t.submit "Care <3" %>
+        <%= t.submit "Add as care-recipient" %>
       <% end %>
     <% elsif user.caregiver == current_user %>
       <%= form_for user do |t| %>
         <%= t.hidden_field :caregiver_id, value: nil %>
-        <%= t.submit "Uncare </3" %>
+        <%= t.submit "Remove as care-recipient" %>
       <% end %>
     <% else %>
       caregiver: <%= link_to user.caregiver.first_name, user.caregiver %>

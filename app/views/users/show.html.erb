@@ -21,7 +21,7 @@
       <% unless person.caregiver.nil? %>
         <%= form_for person do |t| %>
           <%= t.hidden_field :caregiver_id, value: nil %>
-          <%= t.submit "Uncare </3" %>
+          <%= t.submit "Remove" %>
         <% end %>
       <% end %>
     </li>
