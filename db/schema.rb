@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113152310) do
+ActiveRecord::Schema.define(version: 20150113210110) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(version: 20150113152310) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
+    t.integer  "gender"
+    t.integer  "age"
+    t.text     "interests"
   end
 
   add_index "users", ["caregiver_id"], name: "index_users_on_caregiver_id"

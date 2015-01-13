@@ -41,7 +41,8 @@ class UsersController < ApplicationController
   end
 
   def secure_params
-    params.require(:user).permit(:role, :caregiver_id)
+    #FIXME probably not necessary because of devise settings (see registrations_controller)
+    params.require(:user).permit(:caregiver_id, :role, :gender, :age, :interests)
   end
 
 end

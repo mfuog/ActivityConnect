@@ -7,10 +7,12 @@ class User < ActiveRecord::Base
   has_many :joint_activities, through: :participations, source: :activity
   has_many :comments
   enum role: [:admin, :caregiver, :care_recipient]
+  enum gender: [:male, :female]
   after_initialize :set_default_role, :if => :new_record?
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :gender, presence: true
   validates :role, presence: true
   validates :address, presence: true
 

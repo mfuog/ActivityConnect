@@ -12,6 +12,9 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user)
           .permit(:first_name,
                   :last_name,
+                  :gender,
+                  :age,
+                  :interests,
                   :email,
                   :address,
                   :password,
@@ -22,7 +25,10 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user)
           .permit(:first_name,
                   :last_name,
-                  :email,
+                  :gender,
+                  :age,
+                  :interests,
+                  :email,                  
                   :address,
                   :password,
                   :password_confirmation,

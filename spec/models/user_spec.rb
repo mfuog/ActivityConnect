@@ -11,6 +11,7 @@ describe User do
   it { should validate_presence_of :address }
   it { should validate_presence_of :email }
   it { should validate_uniqueness_of :email }
+  it { should define_enum_for(:gender).with([:male, :female]) }
   it { should define_enum_for(:role).with([:admin, :caregiver, :care_recipient]) }
 
   describe "role" do

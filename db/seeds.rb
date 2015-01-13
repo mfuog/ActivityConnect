@@ -15,6 +15,7 @@ admin1 = User.create!(
   first_name: ENV['ADMIN_FIRSTNAME'],
   last_name: ENV['ADMIN_LASTNAME'],
   email: ENV['ADMIN_EMAIL'],
+  gender: "female",
   address: "Georg Lückligs väg 16, Växjö",
   password: ENV['ADMIN_PASSWORD'],
   password_confirmation: ENV['ADMIN_PASSWORD']
@@ -23,6 +24,7 @@ admin2 = User.create!(
   role: "admin",
   first_name: ENV['ADMIN2_FIRSTNAME'],
   last_name: ENV['ADMIN2_LASTNAME'],
+  gender: "female",
   email: ENV['ADMIN2_EMAIL'],
   address: "Gamla vägen 7, Växjö",
   password: ENV['ADMIN2_PASSWORD'],
@@ -38,6 +40,8 @@ karl = User.create!(
   role: "caregiver",
   first_name: "Karl",
   last_name: "Karlsson",
+  gender: "male",
+  age: "39",
   email: "karl.karlsson@example.com",
   address: "Stallvägen 25, Växjö",
   password: "karlkarl",
@@ -47,6 +51,8 @@ linnea = User.create!(
   role: "caregiver",
   first_name: "Linnea",
   last_name: "Lin",
+  gender: "female",
+  age: "45",
   email: "linnea.lin@example.com",
   address: "Arabygatan 31, Växjö",
   password: "linnealinnea",
@@ -62,6 +68,9 @@ alice = User.create!(
   caregiver: karl,
   first_name: "Alice",
   last_name: "Example",
+  gender: "female",
+  age: "53",
+  interests: "My grandchildren, being outside, going for walks",
   email: "alice@example.com",
   address: "Ramsövägen 26, Växjö",
   password: "alicealice",
@@ -72,6 +81,9 @@ bob = User.create!(
   caregiver: linnea,
   first_name: "Bob",
   last_name: "Example",
+  gender: "male",
+  age: "68",
+  interests: "Reading, repairing stuff, playing chess and other board games",
   email: "bob@example.com",
   address: "Lindögatan 4, Växjö",
   password: "bobbob",
@@ -81,6 +93,9 @@ chuck = User.create!(
   role: "care_recipient",
   first_name: "Chuck",
   last_name: "Chuckles",
+  gender: "male",
+  age: "72",
+  interests: "I'm interested in nature, wildlife, plants and photagraphy.",
   email: "chuck.chuckles@example.com",
   address: "Hästskovägen 9, Växjö",
   password: "chuckchuck",
@@ -111,31 +126,31 @@ chess = Activity.create(
 # Comments
 #
 
-Comment.create(
+Comment.create!(
   commenter: alice,
   activity: chess,
   body: "I would love to play chess with you, but I'm no pro so you'd have to be patient with me. :)"
 )
 
-Comment.create(
+Comment.create!(
   commenter: bob,
   activity: lake_walk,
   body: "I'm in! What time should we go and where to meet?"
 )
 
-Comment.create(
+Comment.create!(
   commenter: alice,
   activity: lake_walk,
   body: "I thought maybe at 14:00. Let's meet in front of the Netto. Looking forward to it!"
 )
 
-Comment.create(
+Comment.create!(
   commenter: chuck,
   activity: lake_walk,
   body: "Can I also join you guys?"
 )
 
-Comment.create(
+Comment.create!(
   commenter: alice,
   activity: lake_walk,
   body: "Sure!"
@@ -145,17 +160,17 @@ Comment.create(
 # Activity participants
 #
 
-Participation.create(
+Participation.create!(
   activity: lake_walk,
   user: bob
 )
 
-Participation.create(
+Participation.create!(
   activity: lake_walk,
   user: chuck
 )
 
-Participation.create(
+Participation.create!(
   activity: chess,
   user: alice
 )
