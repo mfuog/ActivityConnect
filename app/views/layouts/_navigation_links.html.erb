@@ -4,7 +4,7 @@
   <% if current_user.admin? || current_user.caregiver? %>
     <li><%= link_to "Users", users_path %></li>
   <% end %>
-  <li><%= link_to "My profile (#{current_user.first_name})", user_path(current_user.id) %></li>
+  <li><%= link_to "My profile (#{current_user.first_name})", profile_path %></li>
   <li><%= link_to "Sign out", destroy_user_session_path, :method=>"delete" %></li>
 <% else %>
   <li><%= link_to "Sign in", new_user_session_path %></li>
