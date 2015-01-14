@@ -101,6 +101,42 @@ chuck = User.create!(
   password: "chuckchuck",
   password_confirmation: "chuckchuck"
 )
+john = User.create!(
+  role: "care_recipient",
+  first_name: "John",
+  last_name: "Johansen",
+  gender: "male",
+  age: "65",
+  interests: "I like being outdoors, and playing chess. I have a dog.",
+  email: "john.johansen@example.com",
+  address: "Röjningsvägen 9, 352 51 Växjö, Sweden",
+  password: "johnjohn",
+  password_confirmation: "johnjohn"
+)
+alex = User.create!(
+  role: "care_recipient",
+  first_name: "Alex",
+  last_name: "Atkinson",
+  gender: "male",
+  age: "69",
+  interests: "I play the trumpet and the accordion. Would be nice to keep up playing. I also like cooking.",
+  email: "alex.atkinson@example.com",
+  address: "Lusthusgatan 1, 352 59 Växjö, Sweden",
+  password: "alexalex",
+  password_confirmation: "alexalex"
+)
+lisa = User.create!(
+  role: "care_recipient",
+  first_name: "Lisa",
+  last_name: "Larson",
+  gender: "female",
+  age: "73",
+  interests: "I enjoy cooking and doing handy crafts. In the summer I like to garden.",
+  email: "lisa.larson@example.com",
+  address: "Johan Allgulins väg 5, 352 57 Växjö, Sweden",
+  password: "lisalisa",
+  password_confirmation: "lisalisa"
+)
 
 #
 # Activities
@@ -120,6 +156,46 @@ chess = Activity.create(
   proposed_time: Time.now + 2.weeks,
   address: bob.address,
   author: bob
+)
+
+bingo = Activity.create(
+  title: "Let's play bingo!",
+  description: "There is a bingo night at the Vaxjo Community Center at 5pm tomorrow. Let's have more people attend this time. I go every few weeks, but it would be nice to meet more people there.",
+  proposed_time: Time.now + 2.weeks,
+  address: chuck.address,
+  author: chuck
+)
+
+fika = Activity.create(
+  title: "Stroll in Vaxjo with fika afterwards",
+  description: "We will meet at the fountain downtown at 11am and go for a leisurely walk around the lake. If the weather is nice bring a book and we will sit down to read and chat outside afterwards.",
+  proposed_time: Time.now + 2.weeks,
+  address: bob.address,
+  author: bob
+)
+
+shopping = Activity.create(
+  title: "Shopping at Willy's",
+  description: "I'm taking the bust to Willy's Supermarket on Saturday the 8th at 3pm from Resecentrum. Who wants to join me? Fika afterwards :)",
+  proposed_time: Time.now + 2.weeks,
+  address: alex.address,
+  author: alex
+)
+
+lucia = Activity.create(
+  title: "Lucia Event in Vaxjo",
+  description: "There is a Lucia Event at the Church at 8pm on December 6th. I'm looking for 1 - 3 people to join me. Time to get in a Christmas mood! Comment if you would be interested. I also suggest those who have time join me for dinner at Rosegarden at 6:30pm before walking to the church.",
+  proposed_time: Time.now + 2.weeks,
+  address: alice.address,
+  author: alice
+)
+
+cooking = Activity.create(
+  title: "Let's cook Italian this weekend",
+  description: "I have an italian cookbook with great recipes and delicious pictures. Would be more fun to cook together. I'm looking for 1 - 2 people to join me. Comment below if you're interested. I'll provide all ingredients.",
+  proposed_time: Time.now + 2.weeks,
+  address: lisa.address,
+  author: lisa
 )
 
 #
