@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: [:participants, :show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
@@ -9,6 +9,12 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all
     respond_with(@activity)
+  end
+
+  # GET /activities/:id/participants.json
+  def participants
+    @activity
+    respond_to :json
   end
 
   # GET /activities/:id
