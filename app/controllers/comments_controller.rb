@@ -1,9 +1,14 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: :show
+  respond_to :html, :json
+
+  # GET /activities/:id/comments.json
+  def index
+    @comments = Comment.where(commenter_id: params[:activity_id])
+    respond_to :json
+  end
 
   # POST /comments
-  # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
     @comment.commenter_id = current_user.id if current_user

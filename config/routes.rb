@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :activities
+  resources :activities do
+    resources :comments, shallow: true, only: [:index]
+  end
   resources :comments, only: [:create]
   resources :participations, only: [:create, :destroy]
+
 end
