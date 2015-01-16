@@ -1,114 +1,127 @@
-<% if @user == current_user %>
-  <h3>My profile</h3>
-<% else %>
-  <h3>User <%= @user.first_name %></h3>
-<% end %>
-
-<!-- Show role of admins and caregivers only -->
-<% unless @user.care_recipient? %>
-  <p><i><%= @user.role %></i></p>
-<% end %>
-
-<!-- Displayed to admins and caregivers visiting care-recipients' profiles -->
-<% if @user.care_recipient? && !current_user.care_recipient? %>
-  <p>
-    <strong>Caregiver:</strong>
-    <% if @user.caregiver_id.blank? %>
-      <i>none</i>
-    <% else %>
-      <%= link_to @user.caregiver.first_name, @user.caregiver %>
-    <% end %>
-  </p>
-<% end %>
-
-<p><strong>First name:</strong> <%= @user.first_name %></p>
-<p><strong>Last name:</strong> <%= @user.last_name %></p>
-<p><strong>Gender:</strong> <%= @user.gender %></p>
-<p><strong>Age:</strong> <%= @user.age %></p>
-<p><strong>Interests:</strong> <%= @user.interests %></p>
-<% unless @user.address.blank? %>
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-  <iframe width="300"
-          height="250"
-          frameborder="0"
-          style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?q=<%=@user.address%>&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
-  </iframe>
-<% end %>
-<p><strong>E-mail:</strong> <%= mail_to @user.email %></p>
-<%= link_to "Edit profile", edit_user_registration_path if @user == current_user %>
-
-<!-- Displayed to caregivers visiting their own profile -->
-<% if current_user == @user && @user.caregiver? %>
-  <h4>My care-recipients</h4>
-  <ul>
-    <% @user.care_recipients.each do |person| %>
-    <li>
-      <%= link_to person.first_name, person %>
-      <% unless person.caregiver.nil? %>
-        <%= form_for person do |t| %>
-          <%= t.hidden_field :caregiver_id, value: nil %>
-          <%= t.submit "Remove" %>
-        <% end %>
+<div class="row">
+  <div class="col-md-12">
+      <% if @user == current_user %>
+        <h2>My profile</h2>
+      <% else %>
+        <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
       <% end %>
-    </li>
-    <% end %>
-  </ul>
-  <%= link_to "Find care-recipients", users_path %>
-<% end %>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+      <!-- Show role of admins and caregivers only -->
+      <% unless @user.care_recipient? %>
+        <h4><span class="label label-success"><%= @user.role %></span></h4>
+      <% end %>
 
-<!-- Displayed to care-recipients visiting teir own profile -->
-<% if current_user == @user && @user.care_recipient? %>  
-  <h4>Porposed activities</h4>
-  <ul>
-    <% @user.authored_activities.each do |activity| %>
-      <li><%= link_to activity.title, activity %></li>
-    <% end %>
-    <% if @user.authored_activities.blank? %>
-      <li><i>none</i></li>
-    <% end %>
-  </ul>
-  <%= link_to "Propose Activity", new_activity_path %>
+      <!-- Displayed to admins and caregivers visiting care-recipients' profiles -->
+      <% if @user.care_recipient? && !current_user.care_recipient? %>
+        <p>
+          <strong>Caregiver:</strong>
+          <% if @user.caregiver_id.blank? %>
+            <i>none</i>
+          <% else %>
+            <%= link_to @user.caregiver.first_name, @user.caregiver %>
+          <% end %>
+        </p>
+      <% end %>
+      <hr>
+      <dl class="dl-horizontal user-profile">
+        <dt>Age:</dt><dd><%= @user.age %></dd>
+        <dt>Gender:</dt><dd><%= @user.gender %></dd>
+        <dt>Interests:</dt><dd><%= @user.interests %></dd>
+        <dt>E-mail:</dt><dd><%= mail_to @user.email %></dd>
+      </dl>
+      <%= link_to "Edit profile", edit_user_registration_path, class: "button-xs" if @user == current_user %>
 
-  <h4>joined activities</h4>
-  <ul>
-    <% @user.joined_activities.each do |activity| %>
-      <li><%= link_to activity.title, activity %></li>
-    <% end %>
-    <% if @user.joined_activities.blank? %>
-      <li><i>none</i></li>
-    <% end %>
-  </ul>
-  <%= link_to "Find Activity", activities_path %>
-<% end %>
+      <!-- Displayed to caregivers visiting their own profile -->
+      <% if current_user == @user && @user.caregiver? %>
+        <h4>My care-recipients</h4>
+        <ul>
+          <% @user.care_recipients.each do |person| %>
+          <li>
+            <% unless person.caregiver.nil? %>
+              <%= form_for person do |t| %>
+                <%= link_to "#{person.first_name} #{person.last_name}", person %>
+                <%= t.hidden_field :caregiver_id, value: nil %>
+                <%= t.submit "Remove", class: "button-xs" %>
+              <% end %>
+            <% end %>
+          </li>
+          <% end %>
 
-<!-- Displayed to a caregiver visiting an assigned care-recipient's profile -->
-<% if current_user != @user && current_user == @user.caregiver %>
-  <h3>User statistics</h3>
+          <% if @user.care_recipients.empty? %>
+            <li><i>none</i></li>
+          <% end %>
+        </ul>
+        <%= link_to "Find care-recipients", users_path, class: "button-xs" %>
+      <% end %>
 
-  <h4>Activities proposed by <%= @user.first_name %></h4>
-  <ul>
-    <% @user.authored_activities.each do |activity| %>
-      <li><%= link_to activity.title, activity %></li>
-    <% end %>
-    <% if @user.authored_activities.blank? %>
-      <li><i>none</i></li>
-    <% end %>
-  </ul>
+      <!-- Displayed to care-recipients visiting teir own profile -->
+      <% if current_user == @user && @user.care_recipient? %>  
+        <h4>Porposed activities</h4>
+        <ul>
+          <% @user.authored_activities.each do |activity| %>
+            <li><%= link_to activity.title, activity %></li>
+          <% end %>
+          <% if @user.authored_activities.blank? %>
+            <li><i>none</i></li>
+          <% end %>
+        </ul>
+        <%= link_to "Propose Activity", new_activity_path, class: "button-xs" %>
 
-    <h4>Activities <%= @user.first_name %> joined</h4>
-  <ul>
-    <% @user.joined_activities.each do |activity| %>
-      <li><%= link_to activity.title, activity %></li>
-    <% end %>
-    <% if @user.joined_activities.blank? %>
-      <li><i>none</i></li>
-    <% end %>
-  </ul>
+        <h4>Joined activities</h4>
+        <ul>
+          <% @user.joined_activities.each do |activity| %>
+            <li><%= link_to activity.title, activity %></li>
+          <% end %>
+          <% if @user.joined_activities.blank? %>
+            <li><i>none</i></li>
+          <% end %>
+        </ul>
+        <%= link_to "Find Activity", activities_path, class: "button-xs" %>
+      <% end %>
 
-  <pre><strong>Future work:</strong> More sophisticated statistics on the user's activity will go here.</pre>
-<% end %>
+      <!-- Displayed to a caregiver visiting an assigned care-recipient's profile -->
+      <% if current_user != @user && current_user == @user.caregiver %>
+        <h3>User statistics</h3>
+
+        <h4>Activities proposed by <%= @user.first_name %></h4>
+        <ul>
+          <% @user.authored_activities.each do |activity| %>
+            <li><%= link_to activity.title, activity %></li>
+          <% end %>
+          <% if @user.authored_activities.blank? %>
+            <li><i>none</i></li>
+          <% end %>
+        </ul>
+
+          <h4>Activities <%= @user.first_name %> joined</h4>
+        <ul>
+          <% @user.joined_activities.each do |activity| %>
+            <li><%= link_to activity.title, activity %></li>
+          <% end %>
+          <% if @user.joined_activities.blank? %>
+            <li><i>none</i></li>
+          <% end %>
+        </ul>
+
+        <pre><strong>Future work:</strong> More sophisticated statistics on the user's activity will go here.</pre>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <% unless @user.address.blank? %>
+        <address>
+          <strong>Address:</strong>
+          <%= @user.address %><br>
+        </address>
+        <iframe width="300"
+                height="250"
+                frameborder="0"
+                style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?q=<%=@user.address%>&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
+        </iframe>
+      <% end %>
+    </div>
+    <div class="col-md-5"></div>
+</div>
