@@ -1,70 +1,80 @@
-<h3><%= @activity.title %></h3>
-
-<p>
-  <strong>Proposed by:</strong>
-  <%= link_to @activity.author.first_name, @activity.author %>
-</p>
-
-<p>
-  <strong>Proposed time:</strong>
-  <%= @activity.proposed_time.to_formatted_s(:long_ordinal) %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @activity.description %>
-</p>
-
-<% unless @activity.address.blank? %>
-<p>
-  <strong>Proposed location:</strong>
-  <%= @activity.address %>
-</p>
-
-  <iframe width="300"
-          height="250"
-          frameborder="0"
-          style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?q=<%=@activity.address%>&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
-  </iframe>
-<% end %>
-
-<%= link_to "Edit", edit_activity_path(@activity) if @isAuthor %>
-<%= link_to "Back", activities_path %>
-
-<h4>Participants:</h4>
-<p>
-  <ul>
-    <% @activity.participants.each do |participant| %>
-      <li><%= link_to participant.first_name, participant %></li>
-    <% end %>
-  </ul>
-</p>
-
-<% if @isParticipant %>
-  <%= button_to "Cancel participation",
-                  { controller: :participations,
-                    action: :destroy,
-                    activity_id: @activity.id },
-                  method: :delete %>
-<% else %>
-  <%= button_to "Join activity!",
-                  controller: :participations,
-                  action: :create,
-                  activity_id: @activity.id %>
-<% end %>
-
-<h3>Comments</h3>
-<% @comments.each do |comment| %>
-  <div>
-    <p>
-      <strong><%= link_to comment.commenter.first_name, comment.commenter %>:</strong>
-      <%= comment.created_at.to_formatted_s(:long_ordinal) %>
-      <br>
-      <%= comment.body %>
-    </p>
-  </div>
-<% end %>
-<%= render "comments/form" %>
-
-<%- disqus_thread %>
+<div class="row">
+    <div class="col-md-12">
+        <h2><%= @activity.title %></h2>
+        <%= link_to "Back", activities_path, class: "button-xs" %>
+        <%= link_to "Edit", edit_activity_path(@activity), class: "button-xs" if @isAuthor %>
+        <br>
+        <br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <dl>
+            <dd>
+                <b>Proposed by:</b> 
+                <%= link_to "#{@activity.author.first_name} #{@activity.author.last_name}", @activity.author %>
+            </dd>
+            <dd><b>When:</b> <%= @activity.proposed_time.to_formatted_s(:long_ordinal) %></dd>
+            <br>
+            <dt>Description:</dt>
+            <dd><%= @activity.description %></dd>
+        </dl>
+        <% unless @activity.address.blank? %>
+            <address>
+              <strong>Where:</strong>
+              <%= @activity.address %><br>
+            </address>
+            <iframe width="300"
+                  height="250"
+                  frameborder="0"
+                  style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?q=<%=@activity.address%>&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
+            </iframe>
+        <% end %>
+        </div>
+                <div class="col-md-4">
+        <h3>Comments</h3>
+        <% @comments.each do |comment| %>
+          <div>
+            <p>
+              <strong><%= link_to comment.commenter.first_name, comment.commenter %>:</strong>
+              <%= comment.created_at.to_formatted_s(:long_ordinal) %>
+              <br>
+              <%= comment.body %>
+            </p>
+          </div>
+        <% end %>
+        <%= render "comments/form" %>
+        </div>
+        <div class="col-md-4">
+            <h3>Participants:</h3>
+            <ul>
+                <% @activity.participants.each do |participant| %>
+                    <li>
+                        <%  display_participant = "#{participant.first_name} #{participant.last_name}"%>
+                        <% if participant == current_user %>
+                            <% display_participant += " (you)" %>
+                            <%= link_to display_participant, participant %>
+                            <%= button_to "Cancel participation", {
+                                                controller: :participations,
+                                                action: :destroy,
+                                                activity_id: @activity.id },
+                                              method: :delete,
+                                              class: "button-xs" %>
+                        <% else %>
+                            <%= link_to display_participant, participant %>
+                        <% end %>
+                    </li>
+                <% end %>
+            </ul>
+            <% unless @isParticipant %>
+                <%= button_to "Join activity!", {
+                                    controller: :participations,
+                                    action: :create,
+                                    activity_id: @activity.id },
+                                  class: "button-xs" %>
+            <% end %>
+        </div>
+        <%- disqus_thread %>
+    </div>
+</div>
