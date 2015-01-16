@@ -1,28 +1,32 @@
-<h1>Proposed Activities</h1>
-<p class="lead">
-    Here you’ll find all the activities happening near you. 
-    Click on any of the activities to read a detailed description and to join the activity. 
-    If you have any questions about a particular activity, just comment below the activity description.
-    Happy browsing!
-</p>
-<%= link_to "Propose an Activity yourself!", new_activity_path, class: "btn btn-primary" %>
-<hr>
-  <% @activities.each do |activity| %>
-<h4><%= link_to activity.title, activity %></h4>
-    <dl class="dl-horizontal">
-      <dt>Author</dt>
-      <%  author = activity.author.first_name
-          author += " (you)" if current_user == activity.author
-      %>
-      <dd><%= link_to author, activity.author %></dd>
-      <dt>Description</dt>
-      <dd><%= activity.description %></dd>
-      <dt>Proposed time</dt>
-      <dd><%= activity.proposed_time.to_formatted_s(:long_ordinal) %></dd>
-      <% if current_user == activity.author %>
-        <!-- TODO not yet working, looks only for now -->
-        <dt><%= button_to "Edit", edit_activity_path(activity), class: "button-xs" %></dt>
-        <dd><%= button_to "Destroy", activity, method: :delete, data: { confirm: "Are you sure?" }, class: "button-xs" %></dd>
-      <% end %>
-    </dl>
-  <% end %>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Proposed Activities</h1>
+        <p class="lead">
+          Here you’ll find all the activities happening near you. 
+          Click on any of the activities to read a detailed description and to join the activity. 
+          If you have any questions about a particular activity, just comment below the activity description.
+          Happy browsing!
+        </p>
+        <%= link_to "Propose an Activity yourself!", new_activity_path, class: "btn btn-primary" %>
+        <hr>
+          <% @activities.each do |activity| %>
+        <h4><%= link_to activity.title, activity %></h4>
+        <dl class="dl-horizontal">
+          <dt>Author</dt>
+          <%  author = activity.author.first_name
+              author += " (you)" if current_user == activity.author
+          %>
+          <dd><%= link_to author, activity.author %></dd>
+          <dt>Description</dt>
+          <dd><%= activity.description %></dd>
+          <dt>Proposed time</dt>
+          <dd><%= activity.proposed_time.to_formatted_s(:long_ordinal) %></dd>
+          <% if current_user == activity.author %>
+            <!-- TODO not yet working, looks only for now -->
+            <dt><%= button_to "Edit", edit_activity_path(activity), class: "button-xs" %></dt>
+            <dd><%= button_to "Destroy", activity, method: :delete, data: { confirm: "Are you sure?" }, class: "button-xs" %></dd>
+          <% end %>
+        </dl>
+        <% end %>
+    </div>
+</div>
