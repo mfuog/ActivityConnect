@@ -11,23 +11,25 @@
     <div class="col-md-2">
         <%= image_tag("logo.png", alt: "Activity Logo" ) %>
     </div>
-    <div class="col-md-5">
-        <p>
-            How does it work?
-            Browse activities online today. Attend activities in real life tomorrow!
-            It’s simple and fun to stay active and make new friends.
-                <ul>
-                    <li><b>Sign up</b> to see all activities listed near your location</li>
-                     <li><b>Browse</b> the descriptions of dozens of activities listed by your fellow community members</li>
-                    <li><b>Join</b> activities that interest you: whether it’s for a walk around the lake, an afternoon coffee, gardening with a companion, or a local play or concert!</li>
-                    <li>Propose</b> an activity of your own. Interested in a hobby or want to share something with an activity partner? Why not propose your own activity for others to join! </li>
-                </ul>
-        </p>
+    <div class="col-md-7">
+    
+        <blockquote>
+        How does it work?
+        Browse activities online today. Attend activities in real life tomorrow!
+        </blockquote>
+        
         <h4>What would you like to do first? </h4>
         <%= link_to "Browse activities", activities_path, class: "btn btn-large btn-primary" %>
         <%= link_to "Edit your user profile", edit_user_registration_path, class: "btn btn-large btn-primary" %>
+        <hr>
+        <ul>
+            <li><b>Sign up</b> to see activities near your location</li>
+            <li><b>Browse</b> the descriptions of dozens of activities</li>
+            <li><b>Join</b> activities that interest you: whether it’s for a walk around the lake, an afternoon coffee, gardening with a companion, or a local play or concert!</li>
+            <li><b>Propose</b> an activity of your own. Want to share something with an activity partner? Why not propose your own activity for others to join! </li>
+        </ul>
     </div>
-    <div class="col-md-5"></div>
+    <div class="col-md-3"></div>
 </div>
 <div class="row">
     <br>
