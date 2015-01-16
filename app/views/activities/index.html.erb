@@ -1,33 +1,27 @@
-<h1>Listing Activities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Proposed time</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= link_to activity.title, activity %></td>
-        <td><%= activity.description %></td>
-        <td><%= link_to activity.author.first_name, activity.author %></td>
-        <td><%= activity.proposed_time.to_formatted_s(:long_ordinal) %></td>
-        <td>
-          <% if current_user == activity.author %>
-            <%= link_to "Destroy", activity, method: :delete, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to "Propose Activity", new_activity_path %>
+<h1>Proposed Activities</h1>
+<p class="lead">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam.
+</p>
+<%= link_to "Propose an Activity yourself!", new_activity_path, class: "btn btn-primary" %>
+<hr>
+  <% @activities.each do |activity| %>
+<h4><%= link_to activity.title, activity %></h4>
+    <dl class="dl-horizontal">
+      <dt>Author</dt>
+      <%  author = activity.author.first_name
+          author += " (you)" if current_user == activity.author
+      %>
+      <dd><%= link_to author, activity.author %></dd>
+      <dt>Description</dt>
+      <dd><%= activity.description %></dd>
+      <dt>Proposed time</dt>
+      <dd><%= activity.proposed_time.to_formatted_s(:long_ordinal) %></dd>
+      <% if current_user == activity.author %>
+        <!-- TODO not yet working, looks only for now -->
+        <dt><%= button_to "Edit", edit_activity_path(activity), class: "button-xs" %></dt>
+        <dd><%= button_to "Destroy", activity, method: :delete, data: { confirm: "Are you sure?" }, class: "button-xs" %></dd>
+      <% end %>
+    </dl>
+  <% end %>
