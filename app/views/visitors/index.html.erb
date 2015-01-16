@@ -1,1 +1,35 @@
-<h3>Welcome</h3>
+<div class="row">
+    <div class="col-md-12">
+        <h1>ActivityConnect</h1>
+        <p class = "lead">
+            Some text introductory text here: Lorem ipsum dolor sit amet, consetetur 
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <%= image_tag("logo.png", alt: "Activity Logo" ) %>
+    </div>
+    <div class="col-md-5">
+        <p>
+            Some text here: Lorem ipsum dolor sit amet, consetetur 
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
+        </p>
+        <h4>What would you like to do first? </h4>
+        <%= link_to "Browse activities", activities_path, class: "btn btn-large btn-primary" %>
+        <%= link_to "Edit your user profile", edit_user_registration_path, class: "btn btn-large btn-primary" %>
+    </div>
+    <div class="col-md-5"></div>
+</div>
+<div class="row">
+    <br>
+    <div class="col-md-12">
+        <iframe width="1100"
+              height="400"
+              frameborder="0"
+              style="border:0"
+              src="https://www.google.com/maps/embed/v1/view?zoom=13&center=56.8790,14.8059&key=<%=ENV['GOOGLE_MAPS_EMBED_KEY']%>">
+        </iframe>
+    </div>
+</div>

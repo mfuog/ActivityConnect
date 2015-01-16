@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.dl-horizontal{
+  dt {
+    width: 120px;
+  }
+  dd {
+    margin-left: 130px;
+  }
+}
+
