@@ -5,7 +5,7 @@
   <% if current_user.admin? && current_user != user %>
     <%= form_for(user) do |f| %>
       <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-      <%= f.submit "Change Role", :class => "button-xs" %>
+      <%= f.submit "Change Role", class: "button-xs" %>
     <% end %>
   <% else %>
       <%= user.role %>
@@ -17,12 +17,12 @@
     <% if user.caregiver.nil? %>
       <%= form_for user do |t| %>
         <%= t.hidden_field :caregiver_id, value: current_user.id %>
-        <%= t.submit "Add as care-recipient" %>
+        <%= t.submit "Add as care-recipient", class: "button-xs" %>
       <% end %>
     <% elsif user.caregiver == current_user %>
       <%= form_for user do |t| %>
         <%= t.hidden_field :caregiver_id, value: nil %>
-        <%= t.submit "Remove as care-recipient" %>
+        <%= t.submit "Remove as care-recipient", class: "button-xs" %>
       <% end %>
     <% else %>
       caregiver: <%= link_to user.caregiver.first_name, user.caregiver %>
